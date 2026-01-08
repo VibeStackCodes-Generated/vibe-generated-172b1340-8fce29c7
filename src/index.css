@@ -1,10 +1,7 @@
-@import 'tailwindcss';
+/**
+ * Main stylesheet entry point
+ * Imports design system and tailwind CSS
+ */
 
-@layer base {
-  * {
-    @apply border-gray-200 dark:border-gray-800;
-  }
-  body {
-    @apply bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-50;
-  }
-}
+@import 'tailwindcss';
+@import './styles/globals.css';

@@ -1,0 +1,458 @@
+/**
+ * Global Styles - CSS Reset and Base Styles
+ * Applied to all elements for consistent rendering across browsers
+ */
+
+@import './variables.css';
+
+/* ======================================
+   NORMALIZE & RESET
+   ====================================== */
+
+@layer base {
+  /**
+   * Improve line height consistency
+   */
+  html {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+  }
+
+  /**
+   * Body defaults
+   */
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+    transition: background-color var(--transition-200) var(--ease-in-out),
+      color var(--transition-200) var(--ease-in-out);
+  }
+
+  /**
+   * Remove margins on all headings
+   */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+  }
+
+  h1 {
+    font-size: var(--font-size-5xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-4xl);
+  }
+
+  h3 {
+    font-size: var(--font-size-3xl);
+  }
+
+  h4 {
+    font-size: var(--font-size-2xl);
+  }
+
+  h5 {
+    font-size: var(--font-size-xl);
+  }
+
+  h6 {
+    font-size: var(--font-size-lg);
+  }
+
+  /**
+   * Remove margins on paragraphs
+   */
+  p {
+    margin: 0;
+  }
+
+  /**
+   * Normalize lists
+   */
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /**
+   * Normalize links
+   */
+  a {
+    color: var(--color-primary-600);
+    text-decoration: none;
+    transition: color var(--transition-150) var(--ease-in-out);
+
+    &:hover {
+      color: var(--color-primary-700);
+    }
+
+    &:focus-visible {
+      outline: var(--focus-ring);
+      border-radius: var(--radius-sm);
+    }
+  }
+
+  /**
+   * Reset button styles
+   */
+  button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    cursor: pointer;
+    color: inherit;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &:focus-visible {
+      outline: var(--focus-ring);
+      border-radius: var(--radius-base);
+    }
+  }
+
+  /**
+   * Reset input, textarea, and select
+   */
+  input,
+  textarea,
+  select {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+
+    &:focus-visible {
+      outline: var(--focus-ring);
+    }
+  }
+
+  /**
+   * Improve input accessibility
+   */
+  input[type='radio'],
+  input[type='checkbox'] {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+  }
+
+  /**
+   * Remove spinner from number inputs
+   */
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  /**
+   * Reset table styles
+   */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  td,
+  th {
+    padding: 0;
+  }
+
+  /**
+   * Reset fieldset and legend
+   */
+  fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  legend {
+    padding: 0;
+    display: table;
+  }
+
+  /**
+   * Improve media element defaults
+   */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  /**
+   * Inherit fonts for media
+   */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    font: inherit;
+  }
+
+  /**
+   * Remove default hr styling
+   */
+  hr {
+    margin: 0;
+    border: none;
+    border-top: 1px solid var(--color-border);
+  }
+
+  /**
+   * Improve details element
+   */
+  details {
+    cursor: pointer;
+  }
+
+  summary {
+    display: list-item;
+  }
+
+  /**
+   * Code styling
+   */
+  code,
+  pre {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+  }
+
+  pre {
+    overflow-x: auto;
+    padding: var(--spacing-4);
+    background-color: var(--color-input);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+  }
+
+  code {
+    padding: var(--spacing-1) var(--spacing-2);
+    background-color: var(--color-input);
+    border-radius: var(--radius-sm);
+  }
+
+  pre code {
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+  }
+}
+
+/* ======================================
+   TYPOGRAPHY DEFAULTS
+   ====================================== */
+
+@layer base {
+  /**
+   * Small text default
+   */
+  small {
+    font-size: var(--font-size-sm);
+  }
+
+  /**
+   * Strong/bold default
+   */
+  strong,
+  b {
+    font-weight: var(--font-weight-bold);
+  }
+
+  /**
+   * Emphasis default
+   */
+  em,
+  i {
+    font-style: italic;
+  }
+
+  /**
+   * Subscript and superscript
+   */
+  sub,
+  sup {
+    font-size: var(--font-size-xs);
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  /**
+   * Mark/highlight
+   */
+  mark {
+    background-color: var(--color-warning-100);
+    color: var(--color-warning-900);
+    padding: var(--spacing-1);
+    border-radius: var(--radius-sm);
+  }
+
+  /**
+   * Blockquote styling
+   */
+  blockquote {
+    margin: var(--spacing-4) 0;
+    padding-left: var(--spacing-4);
+    border-left: 4px solid var(--color-primary-500);
+    color: var(--color-muted);
+    font-style: italic;
+  }
+
+  /**
+   * Definition list
+   */
+  dt {
+    font-weight: var(--font-weight-semibold);
+  }
+
+  dd {
+    margin-left: var(--spacing-4);
+    margin-bottom: var(--spacing-2);
+  }
+}
+
+/* ======================================
+   FOCUS MANAGEMENT
+   ====================================== */
+
+@layer base {
+  /**
+   * Enhanced focus visibility for keyboard navigation
+   */
+  *:focus-visible {
+    outline: var(--focus-ring);
+  }
+
+  /**
+   * Remove focus outline for mouse users (handled by :focus-visible)
+   */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /**
+   * Skip link for accessibility
+   */
+  .skip-to-main {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+
+    &:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      display: block;
+      padding: var(--spacing-4);
+      background-color: var(--color-primary-600);
+      color: white;
+      text-decoration: none;
+      z-index: 9999;
+    }
+  }
+}
+
+/* ======================================
+   PRINT STYLES
+   ====================================== */
+
+@media print {
+  @page {
+    margin: 2cm;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* ======================================
+   PREFERS REDUCED MOTION
+   ====================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ======================================
+   HIGH CONTRAST MODE
+   ====================================== */
+
+@media (prefers-contrast: more) {
+  body {
+    border-width: 2px;
+    border-color: var(--color-foreground);
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    border-width: 2px;
+    border-color: currentColor;
+  }
+}
