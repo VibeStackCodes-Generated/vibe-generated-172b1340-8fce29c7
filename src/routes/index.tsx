@@ -39,6 +39,78 @@ function getBasename(): string {
 }
 
 /**
+ * Home Page
+ */
+function HomePage() {
+  return (
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-4xl font-bold text-neutral-900">Welcome to ConvertFlow</h1>
+        <p className="mt-4 text-lg text-neutral-600">
+          Turn contacts into booked revenue reliably and with minimal manual work.
+        </p>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-6">
+          <div className="mb-3 text-2xl">📋</div>
+          <h3 className="font-semibold text-neutral-900">Lead Capture</h3>
+          <p className="mt-2 text-sm text-neutral-600">
+            Embeddable forms, landing pages, and SMS intake.
+          </p>
+        </div>
+
+        <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-6">
+          <div className="mb-3 text-2xl">⭐</div>
+          <h3 className="font-semibold text-neutral-900">Qualification</h3>
+          <p className="mt-2 text-sm text-neutral-600">
+            Scoring rules and automated qualification workflows.
+          </p>
+        </div>
+
+        <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-6">
+          <div className="mb-3 text-2xl">📅</div>
+          <h3 className="font-semibold text-neutral-900">Booking</h3>
+          <p className="mt-2 text-sm text-neutral-600">
+            Calendar integration and one-click booking links.
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/**
+ * Placeholder Pages for Navigation
+ */
+function DashboardPage() {
+  return (
+    <div>
+      <h1 className="text-3xl font-bold text-neutral-900">Dashboard</h1>
+      <p className="mt-4 text-neutral-600">Dashboard content coming soon...</p>
+    </div>
+  )
+}
+
+function ContactsPage() {
+  return (
+    <div>
+      <h1 className="text-3xl font-bold text-neutral-900">Contacts</h1>
+      <p className="mt-4 text-neutral-600">Contacts management coming soon...</p>
+    </div>
+  )
+}
+
+function SettingsPage() {
+  return (
+    <div>
+      <h1 className="text-3xl font-bold text-neutral-900">Settings</h1>
+      <p className="mt-4 text-neutral-600">Settings coming soon...</p>
+    </div>
+  )
+}
+
+/**
  * Application routes
  * Add new routes here for code splitting
  */
@@ -50,11 +122,19 @@ export const router = createBrowserRouter(
       children: [
         {
           index: true,
-          element: (
-            <div className="flex min-h-screen items-center justify-center">
-              <p className="text-muted-foreground">Start building your app</p>
-            </div>
-          ),
+          element: <HomePage />,
+        },
+        {
+          path: '/dashboard',
+          element: <DashboardPage />,
+        },
+        {
+          path: '/contacts',
+          element: <ContactsPage />,
+        },
+        {
+          path: '/settings',
+          element: <SettingsPage />,
         },
       ],
     },
