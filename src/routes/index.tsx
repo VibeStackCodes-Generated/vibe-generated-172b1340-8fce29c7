@@ -1,5 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from '@/App'
+import { LeadList } from '@/components/leads/lead-list'
+import { mockLeads } from '@/data/mock-leads'
 
 /**
  * Get basename dynamically from window location or environment
@@ -93,12 +95,7 @@ function DashboardPage() {
 }
 
 function ContactsPage() {
-  return (
-    <div>
-      <h1 className="text-3xl font-bold text-neutral-900">Contacts</h1>
-      <p className="mt-4 text-neutral-600">Contacts management coming soon...</p>
-    </div>
-  )
+  return <LeadList leads={mockLeads} />
 }
 
 function SettingsPage() {
