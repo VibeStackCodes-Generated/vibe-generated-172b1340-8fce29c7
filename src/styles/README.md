@@ -1,17 +1,22 @@
 # Design System Documentation
 
-This directory contains the complete design system for the ConvertFlow application, including CSS variables, global styles, theme configuration, and component styling strategies.
+Complete design system implementation for ConvertFlow, providing comprehensive design tokens, utilities, hooks, and styling strategies.
 
 ## 📁 File Structure
 
 ```
 src/styles/
-├── theme.ts                    # Design tokens and theme configuration
-├── variables.css               # CSS custom properties (variables)
-├── globals.css                 # Global styles, CSS reset, and base element styling
-├── examples.module.css         # CSS Module examples for component styling
-├── component-strategy.md        # Component styling approach and best practices
-├── README.md                   # This file
+├── theme.ts                      # Design tokens and theme configuration
+├── types.ts                      # TypeScript type definitions
+├── utils.ts                      # Utility functions for theme access
+├── hooks.ts                      # React hooks for theme integration
+├── index.ts                      # Main export entry point
+├── variables.css                 # CSS custom properties (variables)
+├── globals.css                   # Global styles, CSS reset, and base element styling
+├── examples.module.css           # CSS Module examples for component styling
+├── COMPONENT_STRATEGY.md         # Component styling approach and best practices
+├── DESIGN_SYSTEM_REFERENCE.md    # Complete design token reference
+└── README.md                     # This file
 ```
 
 ## 🎨 Design Tokens
@@ -176,30 +181,74 @@ Use inline styles ONLY for truly dynamic values that can't be expressed with cla
 
 ## 🛠️ Utility Functions
 
-### `cn()` - Class Name Combiner
-
-Safely combine Tailwind classes with conditional logic:
+### Theme Access Utilities
 
 ```tsx
-import { cn } from '@/utils/cn'
+import {
+  getColor,
+  getSpacing,
+  getFontSize,
+  createMediaQuery,
+  getCSSVar,
+  mergeClasses,
+  getSizeConfig,
+} from '@/styles'
 
-// Usage
-const classes = cn(
-  'px-4 py-2',
-  isActive && 'bg-blue-500 text-white',
-  disabled && 'opacity-50 cursor-not-allowed'
-)
+// Get color values
+const primaryColor = getColor('primary', 600) // '#0284c7'
+
+// Get spacing values
+const padding = getSpacing(4) // '1rem'
+
+// Get font sizes
+const fontSize = getFontSize('lg') // ['18px', { ... }]
+
+// Create media queries
+const tabletQuery = createMediaQuery('md') // '@media (min-width: 768px)'
+
+// Get CSS variable reference
+const colorVar = getCSSVar('color-primary-600') // 'var(--color-primary-600)'
+
+// Merge class names safely
+const classes = mergeClasses('px-4', isActive && 'bg-primary', 'rounded-md')
+
+// Get size configuration
+const { padding, fontSize, height } = getSizeConfig('md')
 ```
 
-### `useTheme()` - Theme Access Hook
-
-Get type-safe access to theme configuration:
+### React Hooks for Theme Access
 
 ```tsx
-import { useTheme } from '@/hooks/useTheme'
+import {
+  useColor,
+  useSpacing,
+  useClassName,
+  useVariantClasses,
+  useSizeConfig,
+  useDarkMode,
+  usePrefersReducedMotion,
+} from '@/styles'
 
-const theme = useTheme()
-const primaryColor = theme.colors.primary[600]
+// Get color value in component
+const primaryColor = useColor('primary', 600)
+
+// Get spacing value
+const spacing = useSpacing(4)
+
+// Merge classes safely
+const classes = useClassName('px-4', isActive && 'ring-2')
+
+// Get variant-specific classes
+const buttonClasses = useVariantClasses('primary', 'md', { isActive: true })
+
+// Get size configuration
+const { padding, fontSize } = useSizeConfig('md')
+
+// Check for dark mode
+const isDarkMode = useDarkMode()
+
+// Check for reduced motion preference
+const prefersReducedMotion = usePrefersReducedMotion()
 ```
 
 ## 🌈 Semantic Color Utilities
